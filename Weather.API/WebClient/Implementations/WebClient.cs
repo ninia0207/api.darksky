@@ -9,7 +9,7 @@ namespace WebClient.Implementations
         
         public string URL { get; set; }
 
-        public WebClient(string url)
+        public WebClient(string url = null)
         {
             URL = url;
         }
@@ -23,5 +23,7 @@ namespace WebClient.Implementations
                 return content;
             }
         }
+
+        public void ChangeUrl(string url)=> URL = url;
     }
 }
