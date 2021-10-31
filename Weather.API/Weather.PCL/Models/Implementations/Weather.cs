@@ -14,6 +14,7 @@ namespace Weather.PCL.Models.Implementations
         public double Longitude { get; set; }
         public string Timezone { get; set; }
         public Currently Currently { get; set; }
-
+        public Daily Daily { get; set; }
+        public Hourly Hourly { get; set; }
     }
 }

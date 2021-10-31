@@ -16,6 +16,7 @@ namespace Weather.PCL.Implementations
         private readonly IWebClient _webClient = null;
         private TempChoice _temperature = TempChoice.F;
         private Models.Implementations.Weather weatherInfo = null;
+
         public DataBase()
         {
             _webClient = new WebClient.Implementations.WebClient();
