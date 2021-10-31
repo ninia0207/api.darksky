@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.API", "Weather.API\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClient", "WebClient\WebClient.csproj", "{07F10404-3B90-4FFC-A353-8A0C43678086}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.PCL", "Weather.PCL\Weather.PCL.csproj", "{115AD9D5-3E9F-48E3-AAB6-FFD9B2D40662}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.PCL", "Weather.PCL\Weather.PCL.csproj", "{115AD9D5-3E9F-48E3-AAB6-FFD9B2D40662}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

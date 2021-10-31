@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Weather.PCL.Abstractions;
 using Weather.PCL.Implementations;
@@ -11,6 +12,7 @@ namespace Weather.API
     {
         static async Task Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             IDataBase db = new DataBase();
             //41.716667
             //44.783333
