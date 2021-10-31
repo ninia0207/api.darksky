@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Weather.PCL.Abstractions;
 using Weather.PCL.Implementations;
@@ -11,11 +12,13 @@ namespace Weather.API
         static async Task Main(string[] args)
         {
             IDataBase db = new DataBase();
-            //41.7151
-            //44.8271
-            
+            //41.716667
+            //44.783333
+
             do
             {
+                
+
                 Console.Write("Enter lng: ");
                 var IsCorrectLng = double.TryParse(Console.ReadLine(), out double lng);
                 Console.Write("Enter lat: ");
@@ -28,19 +31,22 @@ namespace Weather.API
                 if (!userChoice || choice > 2) continue;
                 db.ChoiceCorF((TempChoice)choice);
 
+                Console.Write("Enter the language(use abbreviation like english = en): ");
+                var userLang = Console.ReadLine();
+                if (userLang.Length > 2) continue;
                 if (!IsCorrectLng || !IsCorrectLat) continue;
 
                 Console.Clear();
                 Console.WriteLine("Loading...");
-                var weatherInfo = await db.GetWeatherDataByLngAndLat(lng, lat);
+                var weatherInfo = await db.GetWeatherDataByLngAndLat(lat, lng, userLang);
                 Console.Clear();
 
-                Console.WriteLine($"Longitude: {weatherInfo.Longitude}");
-                Console.WriteLine($"Latitude: {weatherInfo.Latitude}");
-                Console.WriteLine($"Timezon: {weatherInfo.Timezone}");
+                Console.WriteLine($"Longitude: {weatherInfo.Longitude}  Latitude: {weatherInfo.Latitude}");
+                Console.WriteLine($"Timezone: {weatherInfo.Timezone}");
                 Console.WriteLine($"Summary: {weatherInfo.Currently.Summary}");
                 char tempChoice;
-                if (choice == 1)
+                TempChoice userTempChoice = (TempChoice)choice;
+                if (userTempChoice == TempChoice.C)
                 {
                     tempChoice = 'C';
                 }
@@ -48,10 +54,11 @@ namespace Weather.API
                 {
                     tempChoice = 'F';
                 }
-                Console.WriteLine($"Temperature: {(int)weatherInfo.Currently.ApparentTemperature}° {tempChoice}");
+                Console.WriteLine($"Temperature: {(int)weatherInfo.Currently.ApparentTemperature} °{tempChoice}");
+                Console.WriteLine($"Rain Probability: {weatherInfo.Currently.PrecipProbability}");
+                Console.WriteLine($"Wind Speed: {weatherInfo.Currently.WindSpeed} m/s");
                 Console.WriteLine($"Daily Summary: {weatherInfo.Daily.Summary}");
                 Console.WriteLine($"Hourly Summary: {weatherInfo.Hourly.Summary}");
-
 
                 Console.ReadKey();
                 Console.Clear();

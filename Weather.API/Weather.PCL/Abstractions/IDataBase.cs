@@ -10,7 +10,7 @@ namespace Weather.PCL.Abstractions
 {
     public interface IDataBase
     {
-        public Task<IWeather> GetWeatherDataByLngAndLat(double lng, double lat);
+        public Task<IWeather> GetWeatherDataByLngAndLat(double lat, double lng, string lang);
 
         public void ChoiceCorF(TempChoice F);
     }

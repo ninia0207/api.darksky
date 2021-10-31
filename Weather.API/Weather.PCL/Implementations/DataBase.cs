@@ -28,7 +28,7 @@ namespace Weather.PCL.Implementations
             _temperature = choice;
         }
 
-        public async Task<IWeather> GetWeatherDataByLngAndLat(double lng, double lat)
+        public async Task<IWeather> GetWeatherDataByLngAndLat(double lat, double lng, string lang)
         {
             if(weatherInfo is not null)
             if(weatherInfo.Latitude == lat && weatherInfo.Longitude == lng)
@@ -37,7 +37,7 @@ namespace Weather.PCL.Implementations
                 }
 
 
-            var weatherUrl = $"https://api.darksky.net/forecast/f11a85ff0f9dca472f8be4d387384bfb/{lat},{lng}";
+            var weatherUrl = $"https://api.darksky.net/forecast/f11a85ff0f9dca472f8be4d387384bfb/{lat},{lng}?lang={lang}";
             _webClient.ChangeUrl(weatherUrl);
             var weatherData = await _webClient.GetDataAsync();
             var weatherDataObj = JsonConvert.DeserializeObject<Weather.PCL.Models.Implementations.Weather>(weatherData);
