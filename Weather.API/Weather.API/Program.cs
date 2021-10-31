@@ -39,9 +39,11 @@ namespace Weather.API
                 Console.WriteLine($"Latitude: {weatherInfo.Latitude}");
                 Console.WriteLine($"Timezon: {weatherInfo.Timezone}");
                 Console.WriteLine($"Summary: {weatherInfo.Currently.Summary}");
-
                 
-                Console.WriteLine($"Temperature: {(int)weatherInfo.Currently.ApparentTemperature}");
+                Console.WriteLine($"Temperature: {(int)weatherInfo.Currently.ApparentTemperature}°");
+                Console.WriteLine($"Daily Summary: {weatherInfo.Daily.Summary}");
+                Console.WriteLine($"Hourly Summary: {weatherInfo.Hourly.Summary}");
+
 
                 Console.ReadKey();
                 Console.Clear();
